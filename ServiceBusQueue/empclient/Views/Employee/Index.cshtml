@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewBag.Title = "Employee Management";
+}
+
+
+<form asp-action="Save" asp-controller="Employee" method="post">
+    <table style="row-gap=10">
+        <tr style="margin-bottom: 10px;">
+            <td>
+                <label for="Name">Name</label> &nbsp;
+            </td>
+            <td>
+                <input type="text" id="Name" name="Name" required />
+            </td>
+        </tr>
+
+        <tr style="margin-bottom: 10px;">
+            <td>
+                <label for="Email">Email</label> &nbsp;
+            </td>
+            <td>
+                <input type="email" id="Email" name="Email" required />
+            </td>
+        </tr>
+
+        <tr style="margin-bottom: 10px;">
+            <td>
+                <label for="Department">Department</label> &nbsp;
+            </td>
+            <td>
+                <input type="text" id="Department" name="Department" />
+            </td>
+        </tr>
+
+        <tr style="margin-bottom: 10px;">
+            <td>
+                <label for="HireDate">Hire Date</label> &nbsp;
+            </td>
+            <td>
+                <input type="date" id="HireDate" name="HireDate" />
+            </td>
+        </tr>
+        <tr style="margin-bottom: 10px;">
+            <td>
+                <label for="Salary">Salary</label> &nbsp;
+            </td>
+            <td>
+                <input type="number" id="Salary" name="Salary" step="0.01" />
+            </td>
+        </tr>
+        <tr style="margin-bottom: 10px;">
+            <td>
+                <label for="PhoneNumber">Phone Number</label> &nbsp;
+            </td>
+            <td>
+                <input type="tel" id="PhoneNumber" name="PhoneNumber" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                &nbsp;
+            </td>
+        </tr>
+
+        <tr style="margin-bottom: 10px;">
+            <td colspan="2" align="center">
+                <button type="submit">Save</button>
+                &nbsp;&nbsp;
+                <button type="reset" asp-action="Clear" asp-controller="Employee">Clear</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                &nbsp;
+            </td>
+        </tr>
+
+        <table>
+</form>
+
+<h3>Employee List</h3>
+<table width="75%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.Name</td>
+                <td>@employee.Email</td>
+                <td>@employee.Department</td>
+            </tr>
+        }
+    </tbody>
+</table>
